@@ -18,7 +18,7 @@ Desde el IES Al-Ándalus nos comentan que debemos tener en cuenta los siguientes
     
 Por tanto, en este **tercer spring** abarcaremos todos estos requisitos. Para ello se propone seguir el siguiente diagrama de clases:   
 
-![Diagrama de clases para reservasaulas](src/main/resources/reservasAulas.png)
+![Diagrama de clases para reservasaulas](https://github.com/andresrubiodelrio/ReservasAulas-v2/blob/main/src/main/resources/reservasaulas.png)
 
 He subido a GitHub un esqueleto de proyecto gradle que ya lleva incluidos todos los test necesarios que el programa debe pasar. Dichos test están todos comentados y deberás ir descomentándolos conforme vayas avanzando con la tarea. La URL del repositorio es en la que te encuentras.
 
