@@ -51,6 +51,12 @@ public class Reserva {
 		}
 		this.profesor = profesor;
 	}
+	
+	public static Reserva getReservaFicticia(Aula aula, Permanencia permanencia) {
+		
+		Profesor profesor = new Profesor("Profesor", "de@ejempl.o", "123456789");
+		return new Reserva(profesor, aula, permanencia);
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(aula, permanencia);
