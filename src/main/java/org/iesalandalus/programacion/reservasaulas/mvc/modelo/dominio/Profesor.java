@@ -44,7 +44,7 @@ public class Profesor {
 		if (nombre == null) {
 			throw new NullPointerException("ERROR: El nombre del profesor no puede ser nulo.");
 		}
-		if (nombre.isEmpty()) {
+		if (nombre.trim().isEmpty()) {
 		throw new IllegalArgumentException("ERROR: El nombre del profesor no puede estar vacío.");	
 		}
 		
@@ -87,10 +87,16 @@ public class Profesor {
 		}
 		this.telefono = telefono;
 	}
+	
+	public static Profesor getProfesorFicticio(String correo) {
+		
+		return new Profesor("Nombre", correo);
+	}
+	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(nombre);
+		return Objects.hash(correo);
 	}
 
 	@Override
@@ -102,7 +108,7 @@ public class Profesor {
 		if (getClass() != obj.getClass())
 			return false;
 		Profesor other = (Profesor) obj;
-		return Objects.equals(nombre, other.nombre);
+		return Objects.equals(correo, other.correo);
 	}
 
 	@Override
