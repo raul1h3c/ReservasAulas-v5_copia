@@ -1,14 +1,16 @@
-package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio;
+package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.memoria;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import javax.naming.OperationNotSupportedException;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
+import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.IAulas;
 
-public class Aulas {
+public class Aulas implements IAulas {
 	
-	private List<Aula> coleccionAulas; //Se crea la lista
+	private List<Aula> coleccionAulas; //Se declara la lista
 	
 	public Aulas() {
 		coleccionAulas = new ArrayList<>(); //Se crea como arrayList
@@ -25,8 +27,12 @@ public class Aulas {
 		coleccionAulas = copiaProfundaAulas(aulas.coleccionAulas);
 	}
 	
+	@Override
 	public List<Aula> getAulas() {
-		return copiaProfundaAulas(coleccionAulas);
+		
+		List<Aula> aulasOrdenadas = copiaProfundaAulas(coleccionAulas);
+		aulasOrdenadas.sort(Comparator.comparing(Aula::getNombre)); //Compara por nombre de aulas alfabeticamente.
+		return aulasOrdenadas;
 	}
 	
 	private List<Aula> copiaProfundaAulas(List<Aula> aulas) {
@@ -41,11 +47,13 @@ public class Aulas {
 		return copiaAulas;
 	}
 	
+	@Override
 	public int getNumAulas() {
 		
 		return coleccionAulas.size();//Como array.length
 	}
 	
+	@Override
 	public void insertar (Aula aula) throws OperationNotSupportedException {
 		if (aula == null) {
 			throw new NullPointerException("ERROR: No se puede insertar un aula nula.");
@@ -57,12 +65,13 @@ public class Aulas {
 		}
 	}
 	
+	@Override
 	public Aula buscar (Aula aula) {
 		if (aula == null) {
 			throw new NullPointerException("ERROR: No se puede buscar un aula nula.");
 		}
 		if (coleccionAulas.contains(aula)) { //Si encuentra el aula la devuelve
-			System.out.println("Se ha encontrado el " + aula + " en el índice " + coleccionAulas.indexOf(aula) + "  ");
+			System.out.println("Se ha encontrado el aula en el índice " + coleccionAulas.indexOf(aula) + "  ");
 			return new Aula(aula);
 		}else {
 			System.out.println("No se ha encontrado el aula.");
@@ -70,6 +79,7 @@ public class Aulas {
 		}
 	}
 	
+	@Override
 	public void borrar(Aula aula) throws OperationNotSupportedException {
 		if (aula == null) {
 			throw new NullPointerException("ERROR: No se puede borrar un aula nula.");
@@ -81,6 +91,7 @@ public class Aulas {
 		}
 	}
 
+	@Override
 	public List<String> representar() {
 		
 		List<String> representar = new ArrayList<>();//Lista de string 

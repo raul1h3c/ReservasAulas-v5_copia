@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class PermanenciaPorHora extends Permanencia {
+public class PermanenciaPorHora extends Permanencia {//Hereda de Permanencia
 	
 	private static final int PUNTOS = 3;
 	private static final LocalTime HORA_INICIO = LocalTime.of(8, 00);
@@ -15,7 +15,7 @@ public class PermanenciaPorHora extends Permanencia {
 	
 	public PermanenciaPorHora(LocalDate dia, LocalTime hora) {
 		
-		super(dia);
+		super(dia);//Se utiliza super para el constructor de la clase padre
 		setHora(hora);
 	}
 	public PermanenciaPorHora(PermanenciaPorHora permanenciaC) {

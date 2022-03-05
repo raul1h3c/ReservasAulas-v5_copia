@@ -8,9 +8,7 @@ public enum Tramo {
 
 	private Tramo(String cadenaAMostrar) {
 		this.cadenaAMostrar = cadenaAMostrar;
-	
 }
-	
 	public String toString(){	
 		
 		return cadenaAMostrar;

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 
-public abstract class Permanencia {
+public abstract class Permanencia {//Clase abstracta por lo que no se puede instanciar.
 	
 	private LocalDate dia;
 	protected static final DateTimeFormatter FORMATO_DIA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -39,6 +39,6 @@ public abstract class Permanencia {
 
 	@Override
 	public String toString() {
-		return String.format("Permanencia: [Dia= %s]", dia.format(FORMATO_DIA));
+		return String.format("Permanencia: [Dia = %s]", dia.format(FORMATO_DIA));
 	}//Se utiliza format en el toString para que devuelva la fecha con el formato adecuado.
 }

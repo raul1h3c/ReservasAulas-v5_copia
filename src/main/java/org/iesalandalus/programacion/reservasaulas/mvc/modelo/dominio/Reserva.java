@@ -14,6 +14,7 @@ public class Reserva {
 		setAula(aula);
 		setPermanencia(permanencia);
 	}
+	
 	public Reserva (Reserva reservaC) {
 		
 		if(reservaC == null) {
@@ -24,17 +25,8 @@ public class Reserva {
 		setPermanencia(reservaC.getPermanencia());
 	}
 	public Permanencia getPermanencia() {
-		//Hay que crear una permanencia pero como la clase Permanencia es abstracta no se puede instanciar, asi que se inicializa como nula.
-		Permanencia permanenciaC = null;
-		//Se utiliza instanceof para ver si el supertipo permanencia es de subtipo por hora o por tramo.
-		//Se devuelve una permanencia del subtipo que encuentra.
-		if (permanencia instanceof PermanenciaPorTramo) {
-			permanenciaC = new PermanenciaPorTramo((PermanenciaPorTramo) permanencia); //Hay que castear la permanencia en el subtipo.
-		}
-		if (permanencia instanceof PermanenciaPorHora) {
-			permanenciaC = new PermanenciaPorHora((PermanenciaPorHora) permanencia);
-		}
-		return permanenciaC;
+		
+		return permanencia;
 	}
 	private void setPermanencia(Permanencia permanencia) {
 		if (permanencia == null) {
@@ -75,7 +67,10 @@ public class Reserva {
 	
 	public  float getPuntos() {
 		float puntos = permanencia.getPuntos() + aula.getPuntos();
-	
+		
+		if (puntos > 200) {
+			throw new IllegalArgumentException("ERROR: El profesor no puede tener más de 200 puntos.");
+		}
 		return puntos;
 	}
 	@Override

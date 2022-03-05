@@ -3,7 +3,7 @@ package org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class PermanenciaPorTramo extends Permanencia{
+public class PermanenciaPorTramo extends Permanencia{//Hereda de Permanencia.
 	
 	private Tramo tramo;
 	private static final int PUNTOS = 10;

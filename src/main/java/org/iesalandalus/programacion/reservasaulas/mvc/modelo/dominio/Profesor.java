@@ -90,7 +90,7 @@ public class Profesor {
 	
 	public static Profesor getProfesorFicticio(String correo) {
 		
-		return new Profesor("Nombre", correo);
+		return new Profesor("Nombre", correo, "987654321");
 	}
 	
 
@@ -113,6 +113,6 @@ public class Profesor {
 
 	@Override
 	public String toString() {
-		return String.format("Profesor: Nombre: %s, Correo: %s, Telefono: %s", nombre, correo, telefono);
+		return String.format("Profesor: [Nombre: %s, Correo: %s, Telefono: %s]", nombre, correo, telefono);
 	}	
 }
