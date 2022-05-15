@@ -1,85 +1,85 @@
-package org.iesalandalus.programacion.reservasaulas.mvc.vista;
+package org.iesalandalus.programacion.reservasaulas.mvc.vista.vistaTexto;
 
 public enum Opcion {
 	
 	SALIR("Salir") {//Se le da un mensaje a cada valor del enum
 		public void ejecutar() {
-			vista.salir();//Ejecuta esta opcion si el ordinal es 0
+			vistaTexto.salir();//Ejecuta esta opcion si el ordinal es 0
 		}
 	},	
 	INSERTAR_AULA("Insertar aula") {
 		public void ejecutar() {
-			vista.insertarAula();
+			vistaTexto.insertarAula();
 		}
 	},
 	BORRAR_AULA("Borrar aula") {
 		public void ejecutar() {
-			vista.borrarAula();;
+			vistaTexto.borrarAula();;
 		}
 	},
 	BUSCAR_AULA("Buscar aula") {
 		public void ejecutar() {
-			vista.buscarAula();
+			vistaTexto.buscarAula();
 		}
 	},
 	LISTAR_AULAS("Listar aulas") {
 		public void ejecutar() {
-			vista.listarAulas();
+			vistaTexto.listarAulas();
 		}
 	},
 	INSERTAR_PROFESOR("Insertar profesor") {
 		public void ejecutar() {
-			vista.insertarProfesor();
+			vistaTexto.insertarProfesor();
 		}
 	},
 	BORRAR_PROFESOR("Borrar profesor") {
 		public void ejecutar() {
-			vista.borrarProfesor();
+			vistaTexto.borrarProfesor();
 		}
 	},
 	BUSCAR_PROFESOR("Buscar profesor") {
 		public void ejecutar() {
-			vista.buscarProfesor();
+			vistaTexto.buscarProfesor();
 		}
 	},
 	LISTAR_PROFESORES("Listar profesores") {
 		public void ejecutar() {
-			vista.listarProfesores();
+			vistaTexto.listarProfesores();
 		}
 	},
 	INSERTAR_RESERVA("Insertar reserva") {
 		public void ejecutar() {
-			vista.realizarReserva();
+			vistaTexto.realizarReserva();
 		}
 	},
 	BORRAR_RESERVA("Borrar reserva") {
 		public void ejecutar() {
-			vista.anularReserva();
+			vistaTexto.anularReserva();
 		}
 	},
 	LISTAR_RESERVAS("Listar reservas") {
 		public void ejecutar() {
-			vista.listarReservas();
+			vistaTexto.listarReservas();
 		}
 	},
 	LISTAR_RESERVAS_AULA("Listar reservas aula") {
 		public void ejecutar() {
-			vista.listarReservasAula();
+			vistaTexto.listarReservasAula();
 		}
 	},
 	LISTAR_RESERVAS_PROFESOR("Listar reservas profesor") {
 		public void ejecutar() {
-			vista.listarReservasProfesor();
+			vistaTexto.listarReservasProfesor();
 		}
 	},
 	CONSULTAR_DISPONIBILIDAD("Consultar disponibilidad") {
 		public void ejecutar() {
-			vista.consultarDisponibilidad();
+			vistaTexto.consultarDisponibilidad();
 		}
 	};
 	
 	private String mensajeAMostrar;
-	private static Vista vista;
+	private static VistaTexto vistaTexto;
 	
 	private Opcion(String mensajeAMostrar) {
 		this.mensajeAMostrar = mensajeAMostrar;
@@ -87,11 +87,11 @@ public enum Opcion {
 	
 	public abstract void ejecutar();
 	
-	protected static void setVista(Vista vista) {
-		if (vista == null) {
+	protected static void setVista(VistaTexto vistaTexto) {
+		if (vistaTexto == null) {
 			throw new NullPointerException("ERROR: La vista no pueda ser nula.");
 		}
-		Opcion.vista = vista;
+		Opcion.vistaTexto = vistaTexto;
 	}
 	
 	public static Opcion getOpcionSegunOrdinal(int ordinal) {

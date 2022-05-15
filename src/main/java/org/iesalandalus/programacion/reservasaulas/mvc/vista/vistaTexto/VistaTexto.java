@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.reservasaulas.mvc.vista;
+package org.iesalandalus.programacion.reservasaulas.mvc.vista.vistaTexto;
 
 import java.util.Iterator;
 import java.util.List;
@@ -10,15 +10,17 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Permanencia;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
+import org.iesalandalus.programacion.reservasaulas.mvc.vista.Consola;
+import org.iesalandalus.programacion.reservasaulas.mvc.vista.IVista;
 
-public class Vista implements IVista {
+public class VistaTexto implements IVista {
 	
 	private static final String ERROR = "Ha habido un error";
 	private static final String NOMBRE_VALIDO = "";
 	private static final String CORREO_VALIDO = "[a-zñÑA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zñÑA-Z0-9](?:[a-zñÑA-Z0-9-]{0,61}[a-zñÑA-Z0-9])?(?:\\.[a-zñÑA-Z0-9](?:[a-zñÑA-Z0-9-]{0,61}[a-zñÑA-Z0-9])?)";
 	private IControlador controlador;
 	
-	public Vista() {
+	public VistaTexto() {
 		Opcion.setVista(this);
 	}
 	

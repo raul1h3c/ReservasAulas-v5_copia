@@ -6,7 +6,7 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.FactoriaFuenteDato
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.IModelo;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.Modelo;
 import org.iesalandalus.programacion.reservasaulas.mvc.vista.IVista;
-import org.iesalandalus.programacion.reservasaulas.mvc.vista.Vista;
+import org.iesalandalus.programacion.reservasaulas.mvc.vista.vistaTexto.VistaTexto;
 
 public class MainApp {
 
@@ -14,7 +14,7 @@ public static void main(String[] args) {
 		
 		IModelo modelo = new Modelo(FactoriaFuenteDatos.FICHEROS.crear());//Crea un modelo con ficheros.
 		//objeto de tipo FactoriaFuenteDatos Ficheros.
-		IVista vista = new Vista();
+		IVista vista = new VistaTexto();
 		IControlador controlador = new Controlador(modelo,vista);
 		controlador.comenzar();
 		
