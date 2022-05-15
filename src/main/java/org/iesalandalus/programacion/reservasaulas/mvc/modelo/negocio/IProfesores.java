@@ -19,5 +19,10 @@ public interface IProfesores { //Interfaz generada automaticamente utilizando Re
 	void borrar(Profesor profesor) throws OperationNotSupportedException;
 
 	List<String> representar();
+	
+	void comenzar();
+	
+	void terminar();
+	
 
 }

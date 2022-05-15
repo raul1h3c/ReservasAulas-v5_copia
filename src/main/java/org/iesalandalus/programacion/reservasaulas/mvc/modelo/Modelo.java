@@ -26,6 +26,19 @@ public class Modelo implements IModelo { //Interfaz generada automaticamente de 
 		
 	}
 	@Override
+	public void comenzar() {//Llama a los metodos comenzar de las clases a escribir
+		aulas.comenzar();
+		profesores.comenzar();
+		reservas.comenzar();
+	}
+	
+	public void terminar() {//Llama a los metodos terminar de las clases a escribir
+		aulas.terminar();
+		profesores.terminar();
+		reservas.terminar();
+	}
+	
+	@Override
 	public List<Aula> getAulas() {//Se cambia de array a lista.
 			
 		return aulas.getAulas();

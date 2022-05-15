@@ -28,5 +28,9 @@ public interface IReservas { //Interfaz generada automaticamente utilizando Refa
 	List<Reserva> getReservasPermanencia(Permanencia permanencia);
 
 	boolean consultarDisponibilidad(Aula aula, Permanencia permanencia);
+	
+	void comenzar();
+	
+	void terminar();
 
 }

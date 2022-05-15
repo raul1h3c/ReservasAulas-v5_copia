@@ -19,5 +19,9 @@ public interface IAulas { //Interfaz generada automaticamente utilizando Refacto
 	void borrar(Aula aula) throws OperationNotSupportedException;
 
 	List<String> representar();
+	
+	void comenzar();
+	
+	void terminar();
 
 }

@@ -21,7 +21,6 @@ public class Controlador implements IControlador {//Implementa interfaz
 		if (modelo == null || vista == null) {
 			throw new NullPointerException("El modelo o la vista no pueden ser nulos");
 		}
-		
 		this.modelo = modelo;
 		this.vista = vista;
 		vista.setControlador(this);//Se utiliza para crear una referencia
@@ -29,12 +28,15 @@ public class Controlador implements IControlador {//Implementa interfaz
 	
 	@Override
 	public void comenzar() {
+		modelo.comenzar();//El modelo leera todos los objetos desde que se abre el programa hasta que se cierre
 		vista.comenzar();
 	}
 
 	@Override
 	public void terminar() {
-		System.out.println("Saliendo del programa...");
+		modelo.terminar();/*Todos los objetos que el modelo ha leido, ahora, al cerrar el programa 
+		los va a escribir y guardar en los ficheros correspondientes.*/
+		System.out.println("Saliendo del programa y guardando cambios...");
 	}
 	
 	@Override

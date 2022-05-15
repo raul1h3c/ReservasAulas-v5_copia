@@ -54,5 +54,9 @@ public interface IModelo {
 	List<Reserva> getReservasPermanencia(Permanencia permanencia);
 
 	boolean consultarDisponibilidad(Aula aula, Permanencia permanencia);
+	
+	void comenzar();
+	
+	void terminar();
 
 }
