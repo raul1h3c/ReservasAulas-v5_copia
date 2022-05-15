@@ -1,3 +1,18 @@
 .fondo {
 -fx-background-color: #00D9FF;
 }
+
+.fondoimg {
+-fx-background-image: url("../imagenes/cielofondo.jpg");
+-fx-background-repeat: no-repeat;  
+-fx-background-position: center center;
+}
+
+.botones {
+-fx-background-radius: 15px;
+}
+
+.botones2 {
+-fx-background-radius: 5px;
+}
+

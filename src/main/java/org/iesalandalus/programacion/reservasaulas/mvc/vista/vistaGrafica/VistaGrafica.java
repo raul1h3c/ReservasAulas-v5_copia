@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class VistaGrafica extends Application implements IVista{
 	
-	private static IControlador controladorPrograma = null;
+	private static IControlador controladorPrograma;
 	
 	@Override
 	public void start(Stage escenarioPrincipal) {
@@ -24,11 +24,12 @@ public class VistaGrafica extends Application implements IVista{
 			ControladorPrincipal controllerP = loader.getController();
 			controllerP.setControladorPrincipal(controladorPrograma);
 			
-			Scene escena = new Scene(raiz, 600, 400);
+			Scene escena = new Scene(raiz, 800, 600);
 			escena.getStylesheets().add(LocalizadorRecursos.class.getResource("estilos/estilosPrincipal.css").toExternalForm());
-			escenarioPrincipal.setTitle("Plantilla");
+			escenarioPrincipal.setTitle("Ventana principal");
 			escenarioPrincipal.setScene(escena);
 			escenarioPrincipal.show();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
