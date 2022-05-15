@@ -12,7 +12,7 @@ plugins {
     id 'eclipse'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.12'
-}
+}//Se utiliza este plugin para poder utilizar javafx, pero tambien hace falta la libreria de usuario de javafx
 
 repositories {
     // Use JCenter for resolving dependencies.
