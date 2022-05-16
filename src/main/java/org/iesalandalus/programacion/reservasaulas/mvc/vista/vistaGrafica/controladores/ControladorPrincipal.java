@@ -9,8 +9,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -26,7 +28,7 @@ public class ControladorPrincipal {
 	@FXML private Button BTSalirPrincipal,BTInsertarAula,BTEliminarAula,BTListarAula,BTConsultarDisponibilidad;
 	@FXML private Button BTInsertarProfesor,BTEliminarProfesor,BTListarProfesor; 
 	@FXML private Button BTRealizarReserva,BTAnularReserva,BTListarReserva,BTListarReservaAula,BTListarReservaProfesor;
-	@FXML private MenuItem MICerrar;
+	@FXML private MenuItem MICerrar, MISorpresa;
 	
 	private Stage insertarAulaStage, eliminarAulaStage, listarAulaStage, consultarDisponibilidadStage;
 	private Stage insertarProfesorStage, eliminarProfesorStage, listarProfesorStage;
@@ -45,6 +47,7 @@ public class ControladorPrincipal {
 	private ControladorListarReserva controllerListarReserva;
 	private ControladorListarReservaAula controllerListarReservaAula;
 	private ControladorListarReservaProfesor controllerListarReservaProfesor;
+
 	
 	
 	@FXML
@@ -119,10 +122,27 @@ public class ControladorPrincipal {
 		listarReservaProfesorStage.showAndWait();
 	}
 	
+	
 	@FXML
 	private void salir(ActionEvent evento) {
+		Alert alerta = new Alert(AlertType.INFORMATION);
+		alerta.setTitle("Saliendo del programa.");
+		alerta.setContentText("Hasta otra");
+		alerta.setHeaderText(null);
+		alerta.show();
 		((Stage) BTSalirPrincipal.getParent().getScene().getWindow()).close();
 	}
+	
+	@FXML
+	private void sorpresa(ActionEvent evento) {
+		Alert alerta = new Alert(AlertType.ERROR);
+		alerta.setTitle("Sorpresa!!!");
+		alerta.setContentText("No hay ninguna sorpresa");
+		alerta.setHeaderText(null);
+		alerta.show();
+	}
+	
+	
 	
 	private void crearVentanaInsertarAula() throws IOException {
 		if (insertarAulaStage == null) {
@@ -297,4 +317,5 @@ public class ControladorPrincipal {
 				listarReservaProfesorStage.setScene(scene);
 			}
 	}
-}
+		
+	}

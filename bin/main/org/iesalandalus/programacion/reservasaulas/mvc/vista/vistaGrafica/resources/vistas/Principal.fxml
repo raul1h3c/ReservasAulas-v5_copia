@@ -32,7 +32,10 @@
               <MenuItem fx:id="MICerrar" mnemonicParsing="false" onAction="#salir" text="Close" />
             </items>
           </Menu>
-          <Menu id="MenuEditar" mnemonicParsing="false" text="Editar" />
+          <Menu id="MenuEditar" mnemonicParsing="false" text="Editar">
+               <items>
+                  <MenuItem fx:id="MISorpresa" mnemonicParsing="false" onAction="#sorpresa" text="Pulsa aqui para descubrir el secreto" />
+               </items></Menu>
           <Menu id="MenuAyuda" mnemonicParsing="false" text="Ayuda">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
@@ -128,27 +131,27 @@
          <children>
             <AnchorPane id="AnchorPaneReservas" prefHeight="98.0" prefWidth="548.0">
                <children>
-                  <Button id="BTRealizarReserva" fx:id="BTRealizarReserva" layoutX="1.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="87.0" styleClass="botones" text="Realizar Reserva" wrapText="true">
+                  <Button id="BTRealizarReserva" fx:id="BTRealizarReserva" layoutX="1.0" mnemonicParsing="false" onAction="#abrirRealizarReserva" prefHeight="98.0" prefWidth="87.0" styleClass="botones" text="Realizar Reserva" wrapText="true">
                      <font>
                         <Font name="Ebrima Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button id="BTAnularReserva" fx:id="BTAnularReserva" layoutX="96.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="87.0" styleClass="botones" text="Anular Reserva" wrapText="true">
+                  <Button id="BTAnularReserva" fx:id="BTAnularReserva" layoutX="96.0" mnemonicParsing="false" onAction="#abrirAnularReserva" prefHeight="98.0" prefWidth="87.0" styleClass="botones" text="Anular Reserva" wrapText="true">
                      <font>
                         <Font name="Ebrima Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button id="BTListarReserva" fx:id="BTListarReserva" layoutX="190.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="93.0" styleClass="botones" text="Listar Reservas" wrapText="true">
+                  <Button id="BTListarReserva" fx:id="BTListarReserva" layoutX="190.0" mnemonicParsing="false" onAction="#abrirListarReserva" prefHeight="98.0" prefWidth="93.0" styleClass="botones" text="Listar Reservas" wrapText="true">
                      <font>
                         <Font name="Ebrima Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button id="BTListarReservaAula" fx:id="BTListarReservaAula" layoutX="294.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="93.0" styleClass="botones" text="Listar reservas por aula" wrapText="true">
+                  <Button id="BTListarReservaAula" fx:id="BTListarReservaAula" layoutX="294.0" mnemonicParsing="false" onAction="#abrirListarReservaAula" prefHeight="98.0" prefWidth="93.0" styleClass="botones" text="Listar reservas por aula" wrapText="true">
                   <font>
                         <Font name="Ebrima Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button id="BTListarReservaProfesor" fx:id="BTListarReservaProfesor" layoutX="397.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="124.0" styleClass="botones" text="Listar reservas por profesor" wrapText="true">
+                  <Button id="BTListarReservaProfesor" fx:id="BTListarReservaProfesor" layoutX="397.0" mnemonicParsing="false" onAction="#abrirListarReservaProfesor" prefHeight="98.0" prefWidth="124.0" styleClass="botones" text="Listar reservas por profesor" wrapText="true">
                      <font>
                         <Font name="Ebrima Bold" size="16.0" />
                      </font>

@@ -32,7 +32,10 @@
               <MenuItem fx:id="MICerrar" mnemonicParsing="false" onAction="#salir" text="Close" />
             </items>
           </Menu>
-          <Menu id="MenuEditar" mnemonicParsing="false" text="Editar" />
+          <Menu id="MenuEditar" mnemonicParsing="false" text="Editar">
+               <items>
+                  <MenuItem fx:id="MISorpresa" mnemonicParsing="false" onAction="#sorpresa" text="Pulsa aqui para descubrir el secreto" />
+               </items></Menu>
           <Menu id="MenuAyuda" mnemonicParsing="false" text="Ayuda">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
