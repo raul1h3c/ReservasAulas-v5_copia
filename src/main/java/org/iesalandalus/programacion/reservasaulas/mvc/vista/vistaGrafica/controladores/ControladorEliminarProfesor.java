@@ -2,11 +2,12 @@ package org.iesalandalus.programacion.reservasaulas.mvc.vista.vistaGrafica.contr
 
 import org.iesalandalus.programacion.reservasaulas.mvc.controlador.IControlador;
 
-public class ControladorInsertarAula {
-		
+public class ControladorEliminarProfesor {
+	
 	private IControlador controladorPrincipal;
 	
 	public void setControladorPrincipal(IControlador controlador) {
 		this.controladorPrincipal = controlador;
 	}
+
 }

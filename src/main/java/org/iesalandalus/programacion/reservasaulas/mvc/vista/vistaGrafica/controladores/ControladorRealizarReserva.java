@@ -2,7 +2,11 @@ package org.iesalandalus.programacion.reservasaulas.mvc.vista.vistaGrafica.contr
 
 import org.iesalandalus.programacion.reservasaulas.mvc.controlador.IControlador;
 
-public class ControladorInsertarAula {
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+
+public class ControladorRealizarReserva {
 		
 	private IControlador controladorPrincipal;
 	

@@ -68,7 +68,7 @@
                   <Insets bottom="140.0" left="80.0" />
                </StackPane.margin>
             </Button>
-            <Button id="BTConsultarDisponibilidad" fx:id="BTConsultarDisponibilidad" mnemonicParsing="false" prefHeight="42.0" prefWidth="162.0" styleClass="botones" text="Consultar disponibilidad">
+            <Button id="BTConsultarDisponibilidad" fx:id="BTConsultarDisponibilidad" mnemonicParsing="false" onAction="#abrirConsultarDisponibilidad" prefHeight="42.0" prefWidth="162.0" styleClass="botones" text="Consultar disponibilidad">
             <font>
                   <Font name="Ebrima Bold" size="12.0" />
                </font>
@@ -76,7 +76,7 @@
                   <Insets top="110.0" />
                </StackPane.margin>
             </Button>
-            <Button id="BTListarAula" fx:id="BTListarAula" mnemonicParsing="false" prefHeight="37.0" prefWidth="106.0" styleClass="botones" text="Listado Aulas">
+            <Button id="BTListarAula" fx:id="BTListarAula" mnemonicParsing="false" onAction="#abrirListarAula" prefHeight="37.0" prefWidth="106.0" styleClass="botones" text="Listado Aulas">
             <font>
                   <Font name="Ebrima Bold" size="12.0" />
                </font>
@@ -95,17 +95,17 @@
             </ImageView>
             <AnchorPane id="AnchorPaneProfesores" prefHeight="220.0" prefWidth="33.0">
                <children>
-                  <Button id="BTInsertarProfesor" fx:id="BTInsertarProfesor" layoutX="84.0" layoutY="31.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="69.0" styleClass="botones2" text="Insertar">
+                  <Button id="BTInsertarProfesor" fx:id="BTInsertarProfesor" layoutX="84.0" layoutY="31.0" mnemonicParsing="false" onAction="#abrirInsertarProfesor" prefHeight="31.0" prefWidth="69.0" styleClass="botones2" text="Insertar">
                      <font>
                         <Font name="Ebrima Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button id="BTEliminarProfesor" fx:id="BTEliminarProfesor" layoutX="171.0" layoutY="31.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="69.0" styleClass="botones2" text="Eliminar">
+                  <Button id="BTEliminarProfesor" fx:id="BTEliminarProfesor" layoutX="171.0" layoutY="31.0" mnemonicParsing="false" onAction="#abrirEliminarProfesor" prefHeight="32.0" prefWidth="69.0" styleClass="botones2" text="Eliminar">
                      <font>
                         <Font name="Ebrima Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button id="BTListarProfesor" fx:id="BTListarProfesor" layoutX="101.0" layoutY="79.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="124.0" styleClass="botones2" text="Listado Profesores">
+                  <Button id="BTListarProfesor" fx:id="BTListarProfesor" layoutX="101.0" layoutY="79.0" mnemonicParsing="false" onAction="#abrirListarProfesor" prefHeight="31.0" prefWidth="124.0" styleClass="botones2" text="Listado Profesores">
                      <font>
                         <Font name="Ebrima Bold" size="12.0" />
                      </font>
