@@ -3,6 +3,7 @@ package org.iesalandalus.programacion.reservasaulas.mvc.vista.vistaGrafica.contr
 import java.io.IOException;
 
 import org.iesalandalus.programacion.reservasaulas.mvc.controlador.IControlador;
+import org.iesalandalus.programacion.reservasaulas.mvc.vista.vistaGrafica.resources.Dialogos;
 import org.iesalandalus.programacion.reservasaulas.mvc.vista.vistaGrafica.resources.LocalizadorRecursos;
 
 import javafx.event.ActionEvent;
@@ -10,20 +11,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ControladorPrincipal {
 
-	private IControlador controladorPrincipal;
 	
-	public void setControladorPrincipal(IControlador controlador) {
-		this.controladorPrincipal = controlador;
-	}
 	
 	@FXML private Button BTSalirPrincipal,BTInsertarAula,BTEliminarAula,BTListarAula,BTConsultarDisponibilidad;
 	@FXML private Button BTInsertarProfesor,BTEliminarProfesor,BTListarProfesor; 
@@ -48,7 +45,11 @@ public class ControladorPrincipal {
 	private ControladorListarReservaAula controllerListarReservaAula;
 	private ControladorListarReservaProfesor controllerListarReservaProfesor;
 
+	private IControlador controladorPrincipal;
 	
+	public void setControladorPrincipal(IControlador controlador) {
+		this.controladorPrincipal = controlador;
+	}
 	
 	@FXML
 	public void abrirInsertarAula() throws IOException {
@@ -120,6 +121,7 @@ public class ControladorPrincipal {
 	public void abrirListarReservaProfesor() throws IOException {
 		crearVentanaListarReservaProfesor();
 		listarReservaProfesorStage.showAndWait();
+		
 	}
 	
 	
@@ -142,8 +144,6 @@ public class ControladorPrincipal {
 		alerta.show();
 	}
 	
-	
-	
 	private void crearVentanaInsertarAula() throws IOException {
 		if (insertarAulaStage == null) {
 			insertarAulaStage = new Stage();
@@ -154,9 +154,10 @@ public class ControladorPrincipal {
 			
 			Scene scene = new Scene(raiz,500,400);
 			insertarAulaStage.setTitle("Insertar aulas");
-			insertarAulaStage.initModality(Modality.APPLICATION_MODAL);
+			insertarAulaStage.initModality(Modality.WINDOW_MODAL);
 			insertarAulaStage.setScene(scene);
-		} 
+		} else {
+		}
 	}
 	
 	private void crearVentanaEliminarAula() throws IOException {
@@ -240,11 +241,13 @@ public class ControladorPrincipal {
 				AnchorPane raiz = loader.load();
 				controllerListarProfesor = loader.getController();
 				controllerListarProfesor.setControladorPrincipal(controladorPrincipal);
+				//controllerListarProfesor.inicializa();
 				
 				Scene scene = new Scene(raiz,500,400);
 				listarProfesorStage.setTitle("Listar profesor");
 				listarProfesorStage.initModality(Modality.WINDOW_MODAL);
 				listarProfesorStage.setScene(scene);
+			} else {
 			}
 	}
 		private void crearVentanaRealizarReserva() throws IOException {
@@ -317,5 +320,4 @@ public class ControladorPrincipal {
 				listarReservaProfesorStage.setScene(scene);
 			}
 	}
-		
 	}

@@ -3,14 +3,12 @@ package org.iesalandalus.programacion.reservasaulas.mvc.vista.vistaGrafica;
 import org.iesalandalus.programacion.reservasaulas.mvc.controlador.IControlador;
 import org.iesalandalus.programacion.reservasaulas.mvc.vista.IVista;
 import org.iesalandalus.programacion.reservasaulas.mvc.vista.vistaGrafica.controladores.ControladorPrincipal;
+import org.iesalandalus.programacion.reservasaulas.mvc.vista.vistaGrafica.resources.Dialogos;
 import org.iesalandalus.programacion.reservasaulas.mvc.vista.vistaGrafica.resources.LocalizadorRecursos;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -30,8 +28,8 @@ public class VistaGrafica extends Application implements IVista{
 			
 			Scene escena = new Scene(raiz, 800, 600);
 			escena.getStylesheets().add(LocalizadorRecursos.class.getResource("estilos/estilosPrincipal.css").toExternalForm());
-			escenarioPrincipal.setTitle("Ventana principal");
 			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.setTitle("Ventana principal");
 			escenarioPrincipal.show();
 			
 		} catch(Exception e) {
@@ -53,5 +51,4 @@ public class VistaGrafica extends Application implements IVista{
 	public void salir() {
 		controladorPrograma.terminar();
 	}
-
 }
