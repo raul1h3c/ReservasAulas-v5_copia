@@ -14,8 +14,8 @@
             <Font name="Cambria Bold" size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="66.0" layoutY="158.0" />
-      <Button id="BTEliminarAula" layoutX="214.0" layoutY="285.0" mnemonicParsing="false" text="Anular">
+      <TextField id="TFCorreo" fx:id="TFCorreo" layoutX="66.0" layoutY="158.0" />
+      <Button id="BTAnular" fx:id="BTAnular" layoutX="214.0" layoutY="285.0" mnemonicParsing="false" onAction="#anularReserva" text="Anular">
          <font>
             <Font name="Cambria Bold" size="16.0" />
          </font>
@@ -35,12 +35,12 @@
             <Font name="Cambria Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="284.0" layoutY="158.0" />
+      <TextField id="TFNombre" fx:id="TFNombre" layoutX="284.0" layoutY="158.0" />
       <Label layoutX="198.0" layoutY="200.0" text="Permanencia">
          <font>
             <Font name="Cambria Bold" size="14.0" />
          </font>
       </Label>
-      <DatePicker layoutX="163.0" layoutY="224.0" />
+      <DatePicker id="DPPermanencia" fx:id="DPPermanencia" layoutX="163.0" layoutY="224.0" />
    </children>
 </AnchorPane>

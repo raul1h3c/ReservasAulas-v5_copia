@@ -24,9 +24,9 @@
             <Font name="Cambria Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="66.0" layoutY="160.0" />
-      <TextField layoutX="274.0" layoutY="160.0" />
-      <Button layoutX="199.0" layoutY="279.0" mnemonicParsing="false" text="Realizar">
+      <TextField id="TFCorreo" fx:id="TFCorreo" layoutX="66.0" layoutY="160.0" />
+      <TextField id="TFNombre" fx:id="TFNombre" layoutX="274.0" layoutY="160.0" />
+      <Button id="BTRealizar" fx:id="BTRealizar" layoutX="198.0" layoutY="294.0" mnemonicParsing="false" onAction="#realizarReserva" text="Realizar">
          <font>
             <Font name="Cambria Bold" size="16.0" />
          </font>
@@ -36,7 +36,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <DatePicker layoutX="153.0" layoutY="229.0" />
+      <DatePicker id="DPPermanencia" fx:id="DPPermanencia" layoutX="153.0" layoutY="229.0" />
       <Label layoutX="197.0" layoutY="200.0" text="Permanencia">
          <font>
             <Font name="Cambria Bold" size="14.0" />

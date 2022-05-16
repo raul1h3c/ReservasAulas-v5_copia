@@ -18,8 +18,8 @@
             <Font name="Cambria Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="176.0" layoutY="165.0" />
-      <Button layoutX="209.0" layoutY="238.0" mnemonicParsing="false" text="Eliminar">
+      <TextField id="TFCorreo" fx:id="TFCorreo" layoutX="176.0" layoutY="165.0" />
+      <Button id="BTEliminar" fx:id="BTEliminar" layoutX="209.0" layoutY="238.0" mnemonicParsing="false" onAction="#eliminarProfesor" text="Eliminar">
          <font>
             <Font name="Cambria Bold" size="16.0" />
          </font>

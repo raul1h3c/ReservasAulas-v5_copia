@@ -23,9 +23,9 @@
             <Font name="Cambria Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="77.0" layoutY="160.0" />
-      <TextField layoutX="276.0" layoutY="160.0" />
-      <Button layoutX="209.0" layoutY="334.0" mnemonicParsing="false" text="Insertar">
+      <TextField id="TFNombre" fx:id="TFNombre" layoutX="77.0" layoutY="160.0" />
+      <TextField id="TFCorreo" fx:id="TFCorreo" layoutX="276.0" layoutY="160.0" />
+      <Button id="BTInsertar" fx:id="BTInsertar" layoutX="209.0" layoutY="334.0" mnemonicParsing="false" onAction="#insertarProfesor" text="Insertar">
          <font>
             <Font name="Cambria Bold" size="16.0" />
          </font>
@@ -40,6 +40,6 @@
             <Font name="Cambria Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="176.0" layoutY="251.0" />
+      <TextField id="TFTelefono" fx:id="TFTelefono" layoutX="176.0" layoutY="251.0" />
    </children>
 </AnchorPane>
