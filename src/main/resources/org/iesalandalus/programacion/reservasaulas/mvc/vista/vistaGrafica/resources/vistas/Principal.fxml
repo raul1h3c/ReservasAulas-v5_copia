@@ -52,7 +52,7 @@
                   <Image url="@../imagenes/fondo_aulas.jpg" />
                </image>
             </ImageView>
-            <Button id="BTInsertarAula" fx:id="BTInsertarAula" mnemonicParsing="false" prefHeight="31.0" prefWidth="69.0" styleClass="botones" text="Insertar">
+            <Button id="BTInsertarAula" fx:id="BTInsertarAula" mnemonicParsing="false" onAction="#abrirInsertarAula" prefHeight="31.0" prefWidth="69.0" styleClass="botones" text="Insertar">
                <StackPane.margin>
                   <Insets bottom="140.0" right="80.0" />
                </StackPane.margin>
