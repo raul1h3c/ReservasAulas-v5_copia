@@ -13,14 +13,16 @@ import org.iesalandalus.programacion.utilidades.Entrada;
 public class MainApp {
 
 public static void main(String[] args) {
-		//IVista vista = null;
+		
 		IModelo modelo = new Modelo(FactoriaFuenteDatos.FICHEROS.crear());//Crea un modelo con ficheros.
 		//objeto de tipo FactoriaFuenteDatos Ficheros.
 		
-		
-		/*System.out.println("Elige un tipo de interfaz: (Grafica o Texto)");
+		/*Se crea interfaz grafica por defecto pero descomentando el siguiente segmento de codigo
+		se abre un menú textual en el que se puede elegir entre una interfaz grafica o una de texto*/
+		/*
+		System.out.println("Elige un tipo de interfaz: (Grafica o Texto)");
 		String entrada = Entrada.cadena();
-		
+		IVista vista = null;
 		while (!entrada.equalsIgnoreCase("Grafica") && !entrada.equalsIgnoreCase("Texto")) {
 			System.out.println("Elige un tipo de interfaz: (Grafica o Texto)");
 			entrada = Entrada.cadena();
@@ -29,12 +31,10 @@ public static void main(String[] args) {
 			 vista = new VistaTexto();
 		} else if (entrada.equalsIgnoreCase("Grafica")) {
 			 vista = new VistaGrafica();			
-		}*/
-		
-		
+		}
+		*/
 		IVista vista = new VistaGrafica();
 		IControlador controlador = new Controlador(modelo,vista);
 		controlador.comenzar();
-		
 	}
 }

@@ -34,7 +34,7 @@
           </Menu>
           <Menu id="MenuEditar" mnemonicParsing="false" text="Editar">
                <items>
-                  <MenuItem fx:id="MISorpresa" mnemonicParsing="false" onAction="#sorpresa" text="Pulsa aqui para descubrir el secreto" />
+                  <MenuItem fx:id="MISorpresa" mnemonicParsing="false" onAction="#sorpresa" text="Pulsa aqui para descubrir la sorpresa" />
                </items></Menu>
           <Menu id="MenuAyuda" mnemonicParsing="false" text="Ayuda">
             <items>
