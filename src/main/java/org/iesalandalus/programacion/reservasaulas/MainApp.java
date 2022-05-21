@@ -13,14 +13,29 @@ import org.iesalandalus.programacion.utilidades.Entrada;
 public class MainApp {
 
 public static void main(String[] args) {
+	
+		/*Se crea un modelo de base de datos por defecto pero descomentando el siguiente segmento de codigo
+		se abre un menú textual en el que se puede elegir entre un modelo de base de datos o uno de ficheros*/
+	
+		/*System.out.println("Elige un tipo de almacenamiento: (Ficheros o Base de datos)");
+		String entradaModelo = Entrada.cadena();
+		IModelo modelo = null;
 		
-		IModelo modelo = new Modelo(FactoriaFuenteDatos.FICHEROS.crear());//Crea un modelo con ficheros.
-		//objeto de tipo FactoriaFuenteDatos Ficheros.
+		while (!entradaModelo.equalsIgnoreCase("Ficheros") && !entradaModelo.equalsIgnoreCase("Base de datos")) {
+			System.out.println("Elige un tipo de almacenamiento: (Ficheros o Base de datos)");
+			entradaModelo = Entrada.cadena();
+		}
 		
-		/*Se crea interfaz grafica por defecto pero descomentando el siguiente segmento de codigo
+		if (entradaModelo.equalsIgnoreCase("Ficheros")) {
+			modelo = new Modelo(FactoriaFuenteDatos.FICHEROS.crear());
+		} else if (entradaModelo.equalsIgnoreCase("Base de datos")) {
+			modelo = new Modelo(FactoriaFuenteDatos.BD.crear());
+		}*/
+		
+		/*Se crea interfaz de texto por defecto pero descomentando el siguiente segmento de codigo
 		se abre un menú textual en el que se puede elegir entre una interfaz grafica o una de texto*/
-		/*
-		System.out.println("Elige un tipo de interfaz: (Grafica o Texto)");
+		
+		/*System.out.println("Elige un tipo de interfaz: (Grafica o Texto)");
 		String entrada = Entrada.cadena();
 		IVista vista = null;
 		while (!entrada.equalsIgnoreCase("Grafica") && !entrada.equalsIgnoreCase("Texto")) {
@@ -31,9 +46,10 @@ public static void main(String[] args) {
 			 vista = new VistaTexto();
 		} else if (entrada.equalsIgnoreCase("Grafica")) {
 			 vista = new VistaGrafica();			
-		}
-		*/
-		IVista vista = new VistaGrafica();
+		}*/
+		
+		IModelo modelo = new Modelo(FactoriaFuenteDatos.BD.crear());//Crea un modelo con BD.
+		IVista vista = new VistaTexto();//Crea una vista de texto por defecto.
 		IControlador controlador = new Controlador(modelo,vista);
 		controlador.comenzar();
 	}
