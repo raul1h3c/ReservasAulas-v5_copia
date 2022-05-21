@@ -1,24 +1,38 @@
 # Tarea Reservas de Aulas
-## Profesor: Andrés Rubio del Río
+## Profesor: Paula Delgado García
 ## Alumno: Raúl Herrerias Corral
 
-Desde el IES Al-Ándalus nos acaban de comentar que por favor añadamos persistencia a los datos introducidos, ya que tal y como está ahora la aplicación no es funcional. Por tanto, en este cuarto spring añadiremos persistencia a los datos utilizando para ello ficheros de objetos, para lo que sustituiremos el modelo que teníamos de memoria, por un modelo de ficheros.
 
-El diagrama de clases queda como te muestro a continuación y poco a poco te iré explicando los diferentes pasos a realizar:
+ ¿Qué te pedimos que hagas?
 
-![Diagrama de clases para reservasaulas](src/main/resources/reservasaulas.png)
+El cliente nos acaba de dar unos nuevos requisitos a aplicar sobre la última versión que le mostramos y que le gustó bastante. Lo que nos pide el cliente es lo siguiente:
 
-Por tanto, tu tarea va a consistir en completar los siguientes apartados:
+Que la aplicación no almacene los datos en ficheros y que lo haga en una base de datos creada para tal efecto.
+Los datos de la BD, que es una BD MongoDB, son los siguientes:
 
-1. Crea un nuevo repositorio remoto en github y llámalo reservasAulas-v3.
-2. Actualiza el fichero `README.md` en tu proyecto Eclipse utilizando el que puedes descargar del enlace proporcionado por el profesor y añade tu nombre en el apartado "Alumno". Realiza un commit.
-3. Haz que las clases de dominio (para las que sea necesario) sean serializables para que se puedan leer y escribir de ficheros de objetos. Realiza un commit.
-4. Implementa los métodos de lectura y escritura para la clase `Aulas`. Realiza un commit.
-5. Implementa los métodos de lectura y escritura para la clase `Profesores`. Realiza un commit.
-5. Implementa los métodos de lectura y escritura para la clase `Reservas`. Realiza un commit.
-6. Haz que estos métodos sean accesibles desde el controlador, por lo que deberás modificar la clase `Modelo` y la interfaz `IModelo`. Realiza un commit.
-7. Actualiza la clase `FactoriaFuenteDatos` para que contemple la opción de ficheros. Realiza un commit.
-8. Haz las modificaciones oportunas en la clase `Controlador` para que al comenzar se leen los diferentes ficheros y al salir se escriban los mismos. Realiza un commit y súbelo a tu nuevo repositorio remoto.
+Servidor: localhost o 127.0.01.
+Puerto: 27017
+BD: reservasaulas
+Usuario: reservasaulas
+Contraseña: reservasaulas-2022
+Tu tarea consiste en dotar a la aplicación de la tarea anterior de un nuevo modelo de datos que en vez de utilizar ficheros para almacenar los datos lo haga haciendo uso de una Base de Datos NoSQL. Se pide al menos:
+
+· Acomodar el proyecto para que gradle gestione la dependencia con el driver para java de MongoDB en su última vesión. Además deberás modificar el proyecto para que se puedan ejecutar todas las versiones: ficheros con IU textual, ficheros con IU gráfica, BD con IU textual y BD con IU gráfica.
+
+· Gestionar las aulas para que su persistencia se lleve a cabo por medio de dicha BD.
+
+· Gestionar los profesores para que su persistencia se lleve a cabo por medio de dicha BD.
+
+· Gestionar las reservas para que su persistencia se lleve a cabo por medio de dicha BD.
+
+Para ello debes realizar las siguientes acciones:
+
+1. Lo primero que debes hacer es crear un repositorio  en GitHub a partir de tu repositorio de la tarea anterior.
+2. Clona dicho repositorio localmente para empezar a modificarlo. Modifica el fichero README.md para que indique tus datos y los de esta tarea. Realiza tu primer commit.
+3. Realiza los cambios necesarios para que el proyecto pueda contener cuatro aplicaciones diferentes: ficheros con IU textual, ficheros con IU gráfica, BD con IU textual y BD con IU gráfica. Haz un commit.
+4. Haz que la gestión de aulas utilice la persistencia en la BD. Haz un commit.
+5. Haz que la gestión de profesores utilice la persistencia en la BD. Haz un commit.
+6. Haz que la gestión de reservas utilice la persistencia en la BD. Haz un commit.
 
 ###### Se valorará:
 - La nomenclatura del repositorio de GitHub y del archivo entregado sigue las indicaciones de entrega.
