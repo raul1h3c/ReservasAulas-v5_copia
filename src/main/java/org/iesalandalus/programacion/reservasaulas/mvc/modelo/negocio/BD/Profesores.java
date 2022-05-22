@@ -1,170 +1,82 @@
 package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.BD;
 
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import static com.mongodb.client.model.Filters.eq;
+
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
 
-import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
+import org.bson.Document;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.IProfesores;
 
+import com.mongodb.client.MongoCollection;
+
 public class Profesores implements IProfesores {
 	
-	private static final String NOMBRE_FICHERO_PROFESORES = "fichero/profesores.dat";
+	private static final String COLECCION = "profesores";
 
-	private List<Profesor> coleccionProfesores;
+	private MongoCollection<Document> coleccionProfesores;
 	
 	public Profesores() {
-		coleccionProfesores = new ArrayList<>();
-	}
-	
-	public Profesores(Profesores profesores) {
 		
-		setProfesores(profesores);
 	}
 	
 	@Override
 	public void comenzar() {
-		leer();
-	}
-	
-	private void leer() {
-		File profesores = new File(NOMBRE_FICHERO_PROFESORES);
-		
-		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(profesores))){
-			//ObjectOutputStream FileInputStream para entrada de objetos
-			Profesor profesor = null;
-			
-			do {
-				
-				profesor = (Profesor) in.readObject();//Para que lea el tipo de objeto hay que castear
-				
-				try {
-					insertar(profesor);
-				} catch (OperationNotSupportedException e) {
-					e.printStackTrace();
-				}
-				
-			} while(profesor != null);
-			
-			in.close();//Se cierra el flujo
-			
-		} catch (FileNotFoundException e) {
-			System.out.println(e.getMessage());	
-		} catch (EOFException e) {
-			System.out.println(e.getMessage());	
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		} catch (ClassNotFoundException e) {
-			System.out.println(e.getMessage());
-		}
-		
+		coleccionProfesores = MongoDB.getBD().getCollection(COLECCION);
 	}
 	
 	@Override
 	public void terminar() {
-		escribir();
-	}
-	
-	private void escribir() {
-		File profesores = new File(NOMBRE_FICHERO_PROFESORES);
-		
-		try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(profesores))){
-			//ObjectOutputStream FileOutputStream para salida
-			for (Profesor profesor : coleccionProfesores) {
-				out.writeObject(profesor);
-			}//Se recorre la lista y se escriben todos los objetos de esta
-			out.close();
-			
-		} catch (FileNotFoundException e) {
-			e.getMessage();
-		} catch (IOException e) {
-			e.getMessage();
-		}
-		
-	}
-	
-	private void setProfesores(Profesores profesores) {
-		if (profesores == null) {
-			throw new NullPointerException("ERROR: No se pueden copiar profesores nulos.");
-		}
-		coleccionProfesores = copiaProfundaProfesores(profesores.coleccionProfesores);
-	}
-	
-	private List<Profesor> copiaProfundaProfesores(List<Profesor> profesores) {
-		
-		List<Profesor> copiaProfesores = new ArrayList<>();
-		Iterator<Profesor> I = profesores.iterator();
-		
-		for(profesores.iterator(); I.hasNext();) {
-			Profesor profesor = I.next();
-			copiaProfesores.add(new Profesor(profesor));
-		}
-		return copiaProfesores;
+		MongoDB.cerrarConexion();
 	}
 	
 	@Override
 	public List<Profesor> getProfesores() {
-		
-		List<Profesor> profesoresOrdenados = copiaProfundaProfesores(coleccionProfesores);
-		profesoresOrdenados.sort(Comparator.comparing(Profesor::getCorreo));//Devuelve profesores ordenados por correo
-		
-		return profesoresOrdenados;
+		List<Profesor> profesores = new ArrayList<>();
+		for (Document documentoProfesor : coleccionProfesores.find().sort(MongoDB.getCriterioOrdenacionProfesor())) {
+			Profesor profesor=MongoDB.getProfesor(documentoProfesor);
+			profesores.add(profesor);
+		}
+		return profesores;
 	}
 	
 	@Override
 	public int getNumProfesores() {
-		
-		return coleccionProfesores.size();
+		return (int)coleccionProfesores.countDocuments();
 	}
 	
 	@Override
-	public void insertar (Profesor profesor) throws OperationNotSupportedException {
+	public void insertar(Profesor profesor) throws OperationNotSupportedException {
 		if (profesor == null) {
-			throw new NullPointerException("ERROR: No se puede insertar un profesor nulo.");
+			throw new IllegalArgumentException("No se puede insertar un profesor nulo.");
 		}
-		if (coleccionProfesores.contains(profesor)) {
-			throw new OperationNotSupportedException("ERROR: Ya existe un profesor con ese correo.");
+		if (buscar(profesor) != null) {
+			throw new OperationNotSupportedException("El aula ya existe.");
 		} else {
-			coleccionProfesores.add(new Profesor(profesor));
+			coleccionProfesores.insertOne(MongoDB.getDocumento(profesor));
 		}
 	}
 	
 	@Override
-	public Profesor buscar (Profesor profesor) {
-		if (profesor == null) {
-			throw new NullPointerException("ERROR: No se puede buscar un profesor nulo.");
-		}
-		if (coleccionProfesores.contains(profesor)) {
-			System.out.println("Se ha encontrado el profesor en el índice " + coleccionProfesores.indexOf(profesor) + "  ");
-			return new Profesor(profesor);
-		}else {
-			System.out.println("No se ha encontrado el profesor.");
-			return null;
-		}
+	public Profesor buscar(Profesor profesor) {
+		Document documentoProfesor = coleccionProfesores.find().filter(eq(MongoDB.NOMBRE, profesor.getNombre())).first();
+		return MongoDB.getProfesor(documentoProfesor);
 	}
 	
 	@Override
 	public void borrar(Profesor profesor) throws OperationNotSupportedException {
 		if (profesor == null) {
-			throw new NullPointerException("ERROR: No se puede borrar un profesor nulo.");
+			throw new IllegalArgumentException("No se puede borrar un profesor nulo.");
 		}
-		if (coleccionProfesores.contains(profesor)) {
-			coleccionProfesores.remove(profesor);
+		if (buscar(profesor) != null) {
+			coleccionProfesores.deleteOne(eq(MongoDB.NOMBRE, profesor.getNombre()));
 		} else {
-			throw new OperationNotSupportedException("ERROR: No existe ningún profesor con ese correo.");
-		}
+			throw new OperationNotSupportedException("El profesor a borrar no existe.");
+		} 
 	}
 
 	@Override
