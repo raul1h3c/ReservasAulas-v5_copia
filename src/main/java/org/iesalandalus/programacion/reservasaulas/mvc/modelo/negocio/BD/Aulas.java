@@ -5,7 +5,6 @@ import static com.mongodb.client.model.Filters.eq;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.naming.OperationNotSupportedException;
 
 import org.bson.Document;
@@ -54,17 +53,25 @@ public class Aulas implements IAulas {
 	public void insertar(Aula aula) throws OperationNotSupportedException {
 		if (aula == null) {
 			throw new IllegalArgumentException("No se puede insertar un aula nula.");
-		}
-		if (buscar(aula) != null) {
+		}//No utilizo buscar para que no aparezca el mensaje de buscar.
+		Document documentoAula = coleccionAulas.find().filter(eq(MongoDB.NOMBRE, aula.getNombre())).first();
+		if (documentoAula != null) {
 			throw new OperationNotSupportedException("El aula ya existe.");
 		} else {
-			coleccionAulas.insertOne(MongoDB.getDocumento(aula));
+			coleccionAulas.insertOne(MongoDB.getDocumentoAula(aula));
 		}
 	}
 	
 	@Override
 	public Aula buscar(Aula aula) {
 		Document documentoAula = coleccionAulas.find().filter(eq(MongoDB.NOMBRE, aula.getNombre())).first();
+		//Para que muestre un mensaje al buscar si la encuentra o no.
+		if (documentoAula != null) {
+			System.out.println("Se ha encontrado el aula.");
+		} else {
+			System.out.println("No se ha encontrado el aula.");
+		}
+		
 		return MongoDB.getAula(documentoAula);
 	}
 	
@@ -72,8 +79,9 @@ public class Aulas implements IAulas {
 	public void borrar(Aula aula) throws OperationNotSupportedException {
 		if (aula == null) {
 			throw new IllegalArgumentException("No se puede borrar un aula nula.");
-		}
-		if (buscar(aula) != null) {
+		}//No utilizo buscar para que no aparezca el mensaje de buscar.
+		Document documentoAula = coleccionAulas.find().filter(eq(MongoDB.NOMBRE, aula.getNombre())).first();
+		if (documentoAula != null) {
 			coleccionAulas.deleteOne(eq(MongoDB.NOMBRE, aula.getNombre()));
 		} else {
 			throw new OperationNotSupportedException("El aula a borrar no existe.");

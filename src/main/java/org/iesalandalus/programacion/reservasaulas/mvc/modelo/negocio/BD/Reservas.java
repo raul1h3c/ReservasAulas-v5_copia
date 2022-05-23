@@ -27,10 +27,9 @@ public class Reservas implements IReservas {
 	
 	private static final float MAX_PUNTOS_PROFESOR_MES = 200.0f;
 	private static final String COLECCION = "reservas";
-	private List<Reserva> listaReservas;
 	
 	private MongoCollection<Document> coleccionReservas;
-	
+
 	public Reservas()
 	{
 		
@@ -124,7 +123,7 @@ public class Reservas implements IReservas {
 		if (buscar(reserva) != null) {
 			throw new OperationNotSupportedException("La reserva ya existe.");
 		} else {
-			coleccionReservas.insertOne(MongoDB.getDocumento(reserva));
+			coleccionReservas.insertOne(MongoDB.getDocumentoReserva(reserva));
 		}
 	}
 	
@@ -164,7 +163,7 @@ public class Reservas implements IReservas {
 		if (dia == null) {
 			throw new NullPointerException("No se puede buscar reserva para un día nulo.");
 		}
-		for(Reserva reserva : listaReservas) {
+		for(Reserva reserva : getReservasAula(aula)) {
 			LocalDate dia2 = reserva.getPermanencia().getDia();
 			Aula aula2 = reserva.getAula();
 			if(dia2.equals(dia) && aula2.equals(aula2)) {
@@ -221,8 +220,6 @@ public class Reservas implements IReservas {
 
 		}
 	}
-
-
 	@Override
 	public List<String> representar() {
 		
@@ -233,8 +230,7 @@ public class Reservas implements IReservas {
 		}
 		return representar;
 	}
-
-
+	
 	@Override
 	public List<Reserva> getReservasPermanencia(Permanencia permanencia) {
 		
